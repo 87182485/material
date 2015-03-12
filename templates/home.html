@@ -1,0 +1,60 @@
+    <div class="container">
+        <div layout="row" layout-sm="column" layout-margin class="detail-flex">
+            <div flex>
+                <md-button ng-show="main.showCityState" class="circle-container md-primary" ng-click="main.switchView()">
+                    <h2><span>{{main.condition.display_location.city}}</span></h2>
+                    <h2><span>{{main.condition.display_location.state}}</span></h2>
+                </md-button>
+                <md-button ng-show="!main.showCityState" class="circle-container" ng-click="main.switchView()">
+                    <h2><span>{{main.condition.local_time_rfc822}}</span></h2>
+                </md-button>
+            </div>
+            <div flex>
+                <md-button class="circle-container">
+                    <div class="weather-img-wrapper">
+                        <div class="weather-content">
+                            <span class="weather-name">{{main.condition.weather}}</span>
+                            <img ng-src="{{main.condition.icon_url}}">
+                        </div>
+                    </div>
+                </md-button>
+            </div>
+            <div flex>
+                <md-button class="circle-container">
+                    <div class="temperature-info">
+                        <span>{{main.condition.temperature_string}}</span>
+                    </div>
+                </md-button>
+            </div>
+        </div>
+        <div layout="row" layout-sm="column" layout-margin class="detail-flex">
+            <div flex>
+                <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center">
+                    <div class="">
+                        <h3><span class="fa fa-2x fa-tint"></span></h3>
+                        <span ng-hide="main.rainPredictionByDay">{{main.condition.precip_1hr_in}}%</span>
+                        <span ng-show="main.rainPredictionByDay">{{main.condition.precip_today_in + '%'}}</span>
+                    </div>
+                    <md-switch ng-model="main.rainPredictionByDay" aria-label="switch-rain-prediction-type">
+                        {{main.rainPredictionByDay?'Day':'Hour'}}
+                    </md-switch>
+                </md-whiteframe>
+            </div>
+            <div flex>
+                <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center">
+                    <div class="">
+                        <h3>Relative Humidity</h3>
+                        <span>{{main.condition.relative_humidity}}</span>
+                    </div>
+                </md-whiteframe>
+            </div>
+            <div flex>
+                <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center">
+                    <div class="">
+                        <h3>Wind: <span>{{main.condition.wind_string}}</span></h3>
+                        <h3>Wind Speed: <span>{{main.condition.wind_kph}}</span></h3>
+                    </div>
+                </md-whiteframe>
+            </div>
+        </div>
+    </div>
